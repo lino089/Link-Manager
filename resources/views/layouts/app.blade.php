@@ -7,7 +7,7 @@
     <title>@yield('title', 'Link Manager')</title>
 
     <!-- Tailwind CSS CDN untk styling cepat -->
-    <script src="https://cdn.tailwinds.com"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-gray-100 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
@@ -20,16 +20,16 @@
             </div>
             <nav class="flex space-x-4">
                 <a href="{{ url('/') }}"
-                    class="text-sm font-medium text-gray-600 hover:text-indigo-600 transaction">Halaman Publik</a>
-                <a href="{{ url('links.index') }}"
-                    class="text-sm font medium text-gray-600 hover:text-indigo-600 transition"> Kelola Tautan</a>
+                    class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition">Halaman Publik</a>
+                <a href="{{ route('links.index') }}"
+                    class="text-sm font-medium text-gray-600 hover:text-indigo-600 transition"> Kelola Tautan</a>
             </nav>
         </div>
     </header>
 
     <!-- 2. Kotak Notifikasi / flash message -->
     @if (session('success'))
-        <div class="max-x-4xl mx-auto px-4 mt-6 w-full">
+        <div class="max-w-4xl mx-auto px-4 mt-6 w-full">
             <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-r shadow-sm flex items-center justify-between">
                 <div class="flex items-center">
                     <span class="text-green-600 font-bold mr-2">Sukses: </span>
