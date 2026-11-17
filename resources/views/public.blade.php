@@ -30,7 +30,7 @@
                         @endif
                     </div>
                     <!-- Ikon Panah Eksternal -->
-                    <span class="text-gray-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition duration-200 ml-4 flex-shrink-0">
+                    <span class="text-gray-400 group-hover:text-indigo-600 group-hover:translate-x-1 transition duration-200 ml-4 shrink-0">
                         &rarr;
                     </span>
                 </div>
