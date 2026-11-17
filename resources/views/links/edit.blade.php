@@ -58,20 +58,20 @@
             </div>
             <!-- 3. Deskripsi -->
             <div>
-                <label for="url" class="block text-sm font-medium text-gray-700">description <span class="text-red-500">*</span></label>
+                <label for="description" class="block text-sm font-medium text-gray-700">description <span class="text-red-500">*</span></label>
                 <input 
                     type="text"
-                    name="url"
-                    id="url"
-                    value="{{ old('url', $link->url) }}",
+                    name="description"
+                    id="description"
+                    value="{{ old('description', $link->description) }}",
                     required
                     @class([
                         "mt-1 block w-full rounded-lg border px-3 py-2 focus:outline-none focus:ring-1",
-                        "border-red-500 focus:border-red-500 focus:ring-red-500" => $errors->has('url'),
-                        "border-indigo-500 focus:border-indigo-500 focus:ring-indigo-500" => !$errors->has('url')
+                        "border-red-500 focus:border-red-500 focus:ring-red-500" => $errors->has('description'),
+                        "border-indigo-500 focus:border-indigo-500 focus:ring-indigo-500" => !$errors->has('description')
                     ])
                 >
-                @error('url')
+                @error('description')
                     <p class="text-xs text-red-600 mt-1">{{ $message }}</p>
                 @enderror
             </div>

@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('url');
-            $table->text('descriptions');
-            $table->integer('clicks');
-            $table->boolean('is_active');
+            $table->text('description')->nullable();
+            $table->integer('clicks')->default(0);
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

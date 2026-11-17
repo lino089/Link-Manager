@@ -1,4 +1,4 @@
-@extends('layaouts.app')
+@extends('layouts.app')
 
 @section('title', 'Kelola Tautan')
     @section('content')
@@ -16,7 +16,7 @@
         <!-- Tabel Daftar Tautan -->
         <div class="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
             <div class="overflow-x-auto">
-                <table class="w-full text-left border collapse text-sm">
+                <table class="w-full text-left border-collapse text-sm">
                     <thead>
                         <tr class="bg-gray-50 border-b border-gray-200 text-gray-600 text-xs uppercase font-semibold">
                             <th class="py-3.5 px-4">Judul & Keterangann</th>
@@ -28,9 +28,9 @@
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         @forelse ($links as $link)
-                            <tr class="hover:bd-gray-50 transition">
+                            <tr class="hover:bg-gray-50 transition">
                                 <td class="py-4 px-4">
-                                    <div class="font-medium text-gray-900">{{ $liknk->title }}</div>
+                                    <div class="font-medium text-gray-900">{{ $link->title }}</div>
                                     @if ($link->description)
                                         <div class="text-xs text-gray-500 mt-0.5 line-clamp-1">{{ $link->description }}</div>
                                     @endif
@@ -43,16 +43,17 @@
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Aktif</span>
                                     @else
                                         <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">Nonaktif</span>
+                                    @endif
                                 </td>
                                 <td class="py-4 px-4 text-center font-semibold text-gray-700">
-                                    {{ number_format($link-clicks) }}
+                                    {{ number_format($link->clicks) }}
                                 </td>
                                 <td class="py-4 px-4 text-right space-x-2 whitespace-nowrap">
-                                    <a href="{{ route('links.edit', $links) }}" class="text-indigo-600 hover:text-indigo-900 text-xs font-medium">Edit</a>
+                                    <a href="{{ route('links.edit', $link) }}" class="text-indigo-600 hover:text-indigo-900 text-xs font-medium">Edit</a>
                                     <span class="text-gray-300">|</span>
 
                                     <form action="{{ route('links.destroy', $link) }}" method="POST" class="inline" onsubmit="return confirm('Apakah kamu yakin ingin menghapus tautan ini?');">
-                                        @crsf
+                                        @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-600 hover:text-red-900 text-xs font-medium">
                                             Hapus
@@ -62,8 +63,8 @@
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="5" class="py-8 text-center text-grey-500 text-sm">
-                                    Belum ada tautan yang dibut. Klik tombol diatas untuk menambah tautan pertamamu.
+                                <td colspan="5" class="py-8 text-center text-gray-500 text-sm">
+                                    Belum ada tautan yang dibuat. Klik tombol diatas untuk menambah tautan pertamamu.
                                 </td>
                             </tr>
                         @endforelse

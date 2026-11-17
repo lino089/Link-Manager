@@ -10,7 +10,7 @@ class Link extends Model
     protected $fillable = [
         'title',
         'url',
-        'descriptions',
+        'description',
         'clicks',
         'is_active'
     ];

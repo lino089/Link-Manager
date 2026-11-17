@@ -4,10 +4,7 @@ use App\Http\Controllers\LinkController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Link;
 
-Route::get('/', function () {
-    $links = Link::where('is_active', true)->latest()->get();
-    return view('public', compact('links'));
-})->name('public');
+Route::get('/', [LinkController::class, 'publicPage'])->name('public');
 
 Route::resource('links', LinkController::class);
 
