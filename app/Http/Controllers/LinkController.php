@@ -87,4 +87,19 @@ class LinkController extends Controller
         // Alihkan dengan pesan sukses
         return redirect()->route('links.index')->with('success', 'Tautan Berhasil dihapus!!');
     }
+
+    // 9. Melacak klik tautan dan mengalihkan pengunjung ke URL tujuan.
+    public function visit(Link $link)
+    {
+        // 1. Keamanan: Jika tautan berstatus nonaktif, tolak dengann 404
+        if(!$link->is_active){
+            abort(404, 'Tautan ini sedang tidak aktif.');
+        }
+
+        // 2. Menaikan Jumlah klik sebesar 1 di database.
+        $link->increment('clicks');
+
+        // 3. Alihkan pengunjung ke URL eklsternal
+        return redirect()->away($link->url);
+    }
 }
